@@ -1,152 +1,36 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { SectionHeader } from '@/components/MediaComponents';
-import serviceVideo from '@/assets/service-video.jpg';
-import { Quote, CheckCircle } from 'lucide-react';
-
-const CASE_VIDEOS = {
-  case1: 'https://ik.imagekit.io/byyg2uqjs/Portfolio/Event%20Community%20Gala%20Highlights.mp4?updatedAt=1776439146822&tr=orig-true',
-  case2: 'https://ik.imagekit.io/byyg2uqjs/Portfolio/PROMOTIONAL%20business%20grand%20opening%20promo.mp4?updatedAt=1776439130657&tr=orig-true',
-  case3: 'https://ik.imagekit.io/byyg2uqjs/Portfolio/Event%20conference%20and%20seminar%20highlights.mp4?updatedAt=1776439142998&tr=orig-true',
-};
-
-const caseStudies = [
-  {
-    title: 'Community Cultural Gala — Full Event Production',
-    client: 'Community Organization',
-    problem: 'A community organization was hosting a large cultural gala and needed professional multi-camera coverage, a highlight reel, and social media content to share with attendees and sponsors afterward.',
-    strategy: 'We planned a comprehensive coverage approach with multiple camera angles, dedicated photographer, and a post-event editing timeline that delivered a polished highlight film within one week.',
-    production: 'Full-day event coverage with 3 camera setups, roaming photographer, interview segments with organizers and guests, and live-event audio capture.',
-    results: ['Professional highlight film delivered in 7 days', 'Social media clips generated thousands of views', 'Client booked us for their next 3 events', 'Sponsors received branded recap content'],
-    video: CASE_VIDEOS.case1,
-    quote: 'Skylight captured every important moment. The highlight video was shared widely and helped us attract more sponsors for next year.',
-    quoteName: 'Event Organizer',
-    metrics: { views: '15K+', clips: '12', turnaround: '7 days' },
-  },
-  {
-    title: 'Business Grand Opening — Promotional Video',
-    client: 'Local Business',
-    problem: 'A new business needed a professional promotional video to announce their grand opening, showcase their space, and drive foot traffic from the local community.',
-    strategy: 'We created a cinematic promotional video that highlighted the business atmosphere, products, and the owner\'s story — designed for Facebook, Instagram, and in-store display.',
-    production: 'Half-day shoot with interior and exterior footage, owner interview, product close-ups, and music-driven editing for maximum engagement.',
-    results: ['Video reached 10,000+ people on Facebook', 'Strong opening week foot traffic', 'Content repurposed for ongoing social media', 'Client ordered monthly content package'],
-    video: CASE_VIDEOS.case2,
-    quote: 'The promotional video made our grand opening feel like a real event. People told us they came because they saw the video on Facebook.',
-    quoteName: 'Business Owner',
-    metrics: { reach: '10K+', engagement: '850+', sales: 'Strong' },
-  },
-  {
-    title: 'Corporate Conference — Multi-Day Coverage',
-    client: 'Professional Association',
-    problem: 'A professional association hosting a 2-day conference needed comprehensive video coverage for post-event content, speaker highlight reels, and attendee testimonials.',
-    strategy: 'We deployed a two-person crew for full coverage, capturing keynote speakers, panel discussions, networking moments, and short attendee interviews for a complete content package.',
-    production: 'Two full days of filming with dual camera setups for main stage, roaming coverage for breakout sessions, and on-site interviews.',
-    results: ['Complete event recap video delivered', 'Individual speaker clips for social media', 'Attendee testimonial compilation', 'Organization used content for next year\'s marketing'],
-    video: CASE_VIDEOS.case3,
-    quote: 'The team was professional and unobtrusive. They captured the energy of our conference perfectly.',
-    quoteName: 'Conference Director',
-    metrics: { hours: '20+', clips: '25', satisfaction: '100%' },
-  },
-];
+import { portfolioItems } from '@/data/portfolio';
+import { CheckCircle, Quote } from 'lucide-react';
 
 const CaseStudiesPage = () => {
-  const { t } = useLanguage();
-
-  return (
-    <>
-      <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center">
-        <div className="absolute inset-0">
-          <img src={serviceVideo} alt="Case Studies" className="w-full h-full object-cover" loading="lazy" />
-          <div className="absolute inset-0 cinematic-overlay" />
-          <div className="absolute inset-0 bg-background/50" />
+  const { t, language } = useLanguage();
+  const studies = portfolioItems.slice(0, 2);
+  return <>
+    <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center">
+      <div className="absolute inset-0 bg-surface"><div className="absolute inset-0 cinematic-overlay" /><div className="absolute inset-0 bg-background/50" /></div>
+      <div className="relative z-10 text-center px-4">
+        <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl md:text-6xl font-display font-bold text-foreground">{t('caseStudies.title')}</motion.h1>
+        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="text-muted-foreground text-lg mt-4">{t('caseStudies.subtitle')}</motion.p>
+      </div>
+    </section>
+    <section className="section-padding"><div className="container-custom space-y-32">
+      {studies.map((study, i) => <motion.article key={study.id} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="space-y-12">
+        <div className="relative aspect-[21/9] rounded-lg overflow-hidden bg-secondary flex items-center justify-center">
+          <span className="text-muted-foreground text-sm">{t('portfolio.mediaPending')}</span>
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+          <div className="absolute bottom-0 left-0 p-8 md:p-12"><p className="text-primary text-sm tracking-widest uppercase mb-2">{t('portfolio.working')}</p><h2 className="text-3xl md:text-4xl font-display font-bold text-foreground">{study.title[language]}</h2></div>
         </div>
-        <div className="relative z-10 text-center px-4">
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl md:text-6xl font-display font-bold text-foreground">
-            {t('caseStudies.title')}
-          </motion.h1>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="text-muted-foreground text-lg mt-4">
-            {t('caseStudies.subtitle')}
-          </motion.p>
+        <div className="grid grid-cols-3 gap-6">{['caseStudies.strategy', 'caseStudies.production', 'caseStudies.results'].map(key => <div key={key} className="glass-card p-6 text-center"><div className="text-3xl font-display font-bold gradient-text mb-1">—</div><p className="text-muted-foreground text-xs tracking-widest uppercase">{t(key)}</p></div>)}</div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="glass-card p-8"><h3 className="text-primary text-sm tracking-widest uppercase mb-3">{t('caseStudies.problem')}</h3><p className="text-muted-foreground leading-relaxed">{study.description[language]}</p></div>
+          {['caseStudies.strategy', 'caseStudies.production', 'caseStudies.results'].map(key => <div key={key} className="glass-card p-8"><h3 className="text-primary text-sm tracking-widest uppercase mb-3">{t(key)}</h3><p className="text-muted-foreground leading-relaxed">{t('caseStudies.unavailable')}</p></div>)}
         </div>
-      </section>
-
-      <section className="section-padding">
-        <div className="container-custom space-y-32">
-          {caseStudies.map((study, i) => (
-            <motion.article
-              key={i}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="space-y-12"
-            >
-              <div className="relative aspect-[21/9] rounded-lg overflow-hidden">
-                <video
-                  src={study.video}
-                  className="w-full h-full object-cover"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  controls
-                />
-                {/* hero still image kept for SEO alt context */}
-                <span className="sr-only">{study.title}</span>
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 p-8 md:p-12">
-                  <p className="text-primary text-sm tracking-widest uppercase mb-2">{study.client}</p>
-                  <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground">{study.title}</h2>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-3 gap-6">
-                {Object.entries(study.metrics).map(([key, val]) => (
-                  <div key={key} className="glass-card p-6 text-center">
-                    <div className="text-3xl font-display font-bold gradient-text mb-1">{val}</div>
-                    <p className="text-muted-foreground text-xs tracking-widest uppercase">{key}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="glass-card p-8">
-                  <h3 className="text-primary text-sm tracking-widest uppercase mb-3">{t('caseStudies.problem')}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{study.problem}</p>
-                </div>
-                <div className="glass-card p-8">
-                  <h3 className="text-primary text-sm tracking-widest uppercase mb-3">{t('caseStudies.strategy')}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{study.strategy}</p>
-                </div>
-                <div className="glass-card p-8">
-                  <h3 className="text-primary text-sm tracking-widest uppercase mb-3">{t('caseStudies.production')}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{study.production}</p>
-                </div>
-                <div className="glass-card p-8">
-                  <h3 className="text-primary text-sm tracking-widest uppercase mb-3">{t('caseStudies.results')}</h3>
-                  <ul className="space-y-2">
-                    {study.results.map((r, j) => (
-                      <li key={j} className="flex items-center gap-2 text-muted-foreground text-sm">
-                        <CheckCircle className="w-4 h-4 text-primary shrink-0" /> {r}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              <div className="glass-card p-10 text-center max-w-3xl mx-auto">
-                <Quote className="w-8 h-8 text-primary/30 mx-auto mb-4" />
-                <p className="text-foreground text-lg italic leading-relaxed mb-4">"{study.quote}"</p>
-                <p className="text-primary text-sm">{study.quoteName}</p>
-              </div>
-
-              {i < caseStudies.length - 1 && <div className="w-20 h-px bg-border mx-auto" />}
-            </motion.article>
-          ))}
-        </div>
-      </section>
-    </>
-  );
+        <div className="glass-card p-10 text-center max-w-3xl mx-auto"><Quote className="w-8 h-8 text-primary/30 mx-auto mb-4" /><p className="text-foreground text-lg leading-relaxed">{t('testimonials.pending')}</p></div>
+        {i < studies.length - 1 && <div className="w-20 h-px bg-border mx-auto" />}
+      </motion.article>)}
+    </div></section>
+  </>;
 };
-
 export default CaseStudiesPage;
