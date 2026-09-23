@@ -3,52 +3,22 @@ import { useLanguage } from '@/i18n/LanguageContext';
 import { Link } from 'react-router-dom';
 import { SectionHeader } from '@/components/MediaComponents';
 import { DigitalMarketingPackages, EventPackages } from '@/components/Packages';
-import {
-  Film, Megaphone, Smartphone, Camera, Calendar, Printer, ArrowRight,
-  CreditCard, Award, FileText, Mail, Stamp, BookOpen, Shirt, Coffee, ShoppingBag,
-  Signpost, Type, Megaphone as BillboardIcon, MailOpen, IdCard, GraduationCap, Tag,
-} from 'lucide-react';
+import { Building2, DraftingCompass, HardHat, Files, ClipboardCheck, Ruler, ArrowRight } from 'lucide-react';
 import serviceVideo from '@/assets/service-video.jpg';
-
-const SERVICE_IMAGES = {
-  videoProduction: 'https://ik.imagekit.io/byyg2uqjs/SERVICES/VIDEO%20PRODUCTION.png?updatedAt=1776473404236',
-  digitalMarketing: 'https://ik.imagekit.io/byyg2uqjs/SERVICES/DIGITAL%20MARKETING.png?updatedAt=1776473404773',
-  socialMedia: 'https://ik.imagekit.io/byyg2uqjs/SERVICES/Social%20Media%20Content.png?updatedAt=1776473404363',
-  photography: 'https://ik.imagekit.io/byyg2uqjs/SERVICES/Photography.png?updatedAt=1776473404401',
-  eventCoverage: 'https://ik.imagekit.io/byyg2uqjs/SERVICES/Event%20Coverage.png?updatedAt=1776473404335',
-  printing: 'https://ik.imagekit.io/byyg2uqjs/SERVICES/Printing%20and%20Advertising.png?updatedAt=1776473403873',
-};
 
 const ServicesPage = () => {
   const { t } = useLanguage();
 
   const services = [
-    { icon: Film, key: 'services.videoProduction', image: SERVICE_IMAGES.videoProduction },
-    { icon: Megaphone, key: 'services.promotional', image: SERVICE_IMAGES.digitalMarketing },
-    { icon: Smartphone, key: 'services.socialMedia', image: SERVICE_IMAGES.socialMedia },
-    { icon: Camera, key: 'services.photography', image: SERVICE_IMAGES.photography },
-    { icon: Calendar, key: 'services.eventCoverage', image: SERVICE_IMAGES.eventCoverage },
-    { icon: Printer, key: 'services.brandMedia', image: SERVICE_IMAGES.printing },
+    { icon: Building2, key: 'services.videoProduction' },
+    { icon: DraftingCompass, key: 'services.promotional' },
+    { icon: HardHat, key: 'services.socialMedia' },
+    { icon: Files, key: 'services.photography' },
+    { icon: ClipboardCheck, key: 'services.eventCoverage' },
+    { icon: Ruler, key: 'services.brandMedia' },
   ];
-
-  const printingItems = [
-    { icon: Signpost, label: 'Signboards' },
-    { icon: Type, label: '3D Letters' },
-    { icon: BillboardIcon, label: 'Billboards' },
-    { icon: FileText, label: 'Brochures' },
-    { icon: MailOpen, label: 'Invitations' },
-    { icon: CreditCard, label: 'Business Cards' },
-    { icon: Award, label: 'Certificates' },
-    { icon: IdCard, label: 'ID Cards' },
-    { icon: Stamp, label: 'Stamps' },
-    { icon: Calendar, label: 'Calendars' },
-    { icon: BookOpen, label: 'Notebooks' },
-    { icon: GraduationCap, label: 'Graduation Books' },
-    { icon: Shirt, label: 'T-Shirts' },
-    { icon: Coffee, label: 'Cups' },
-    { icon: ShoppingBag, label: 'Shopping Bags' },
-    { icon: Tag, label: 'Desk Name Plates' },
-  ];
+  const capabilities = ['services.videoProduction', 'services.promotional', 'services.socialMedia', 'services.photography', 'services.eventCoverage', 'services.brandMedia'];
+  const capabilityIcons = [Building2, DraftingCompass, HardHat, Files, ClipboardCheck, Ruler];
 
   return (
     <>
@@ -80,7 +50,7 @@ const ServicesPage = () => {
       {/* Service detail blocks */}
       <section className="section-padding">
         <div className="container-custom space-y-24">
-          {services.map(({ icon: Icon, key, image }, i) => (
+          {services.map(({ icon: Icon, key }, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 40 }}
@@ -90,12 +60,7 @@ const ServicesPage = () => {
             >
               <div className="flex-1 w-full">
                 <div className="relative rounded-lg overflow-hidden group bg-surface">
-                  <img
-                    src={image}
-                    alt={t(key)}
-                    className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
+                  <div className="aspect-video flex items-center justify-center"><Icon className="w-24 h-24 text-primary/40" /></div>
                 </div>
               </div>
               <div className="flex-1">
@@ -118,7 +83,7 @@ const ServicesPage = () => {
         <div className="container-custom">
           <SectionHeader title={t('services.printing.title')} subtitle={t('services.printing.subtitle')} />
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-            {printingItems.map(({ icon: Icon, label }, i) => (
+            {capabilities.map((key, i) => { const Icon = capabilityIcons[i]; return (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 15 }}
@@ -136,9 +101,9 @@ const ServicesPage = () => {
                 <div className="relative w-12 h-12 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/30 flex items-center justify-center mb-3 shadow-[0_0_18px_hsl(var(--primary)/0.25)] group-hover:shadow-[0_0_28px_hsl(var(--primary)/0.55)] group-hover:scale-110 transition-all duration-300">
                   <Icon className="w-5 h-5 text-primary drop-shadow-[0_0_6px_hsl(var(--primary)/0.7)]" />
                 </div>
-                <p className="relative text-foreground text-sm font-medium">{label}</p>
+                <p className="relative text-foreground text-sm font-medium">{t(key)}</p>
               </motion.div>
-            ))}
+            ); })}
           </div>
         </div>
       </section>

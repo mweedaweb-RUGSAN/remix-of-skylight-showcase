@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Check, GraduationCap, Building2, Sparkles, Star, Crown, ArrowRight } from 'lucide-react';
+import { Check, Building2, DraftingCompass, HardHat, ClipboardCheck, Ruler, ArrowRight } from 'lucide-react';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { SectionHeader } from './MediaComponents';
 
@@ -8,42 +8,9 @@ export const DigitalMarketingPackages = () => {
   const { t } = useLanguage();
 
   const plans = [
-    {
-      name: t('packages.starter'),
-      tagline: 'Perfect for small businesses getting started',
-      icon: Sparkles,
-      featured: false,
-      items: [
-        'Facebook Ads Campaign',
-        '10 Social Media Posters',
-        '1 Video Clip',
-        '1 Photography Session',
-      ],
-    },
-    {
-      name: t('packages.standard'),
-      tagline: 'Our most popular package — best value',
-      icon: Star,
-      featured: true,
-      items: [
-        'Facebook Ads Campaign',
-        '15 Social Media Posters',
-        '2 Video Clips',
-        '1 Photography Session',
-      ],
-    },
-    {
-      name: t('packages.premium'),
-      tagline: 'Maximum reach for growing brands',
-      icon: Crown,
-      featured: false,
-      items: [
-        'Facebook Ads Campaign',
-        '30 Social Media Posters',
-        '3 Video Clips',
-        '2 Photography Sessions',
-      ],
-    },
+    { name: t('packages.starter'), tagline: t('services.videoProduction.desc'), icon: Building2, featured: false, items: ['services.videoProduction', 'services.photography'] },
+    { name: t('packages.standard'), tagline: t('services.promotional.desc'), icon: DraftingCompass, featured: false, items: ['services.promotional'] },
+    { name: t('packages.premium'), tagline: t('services.socialMedia.desc'), icon: HardHat, featured: false, items: ['services.socialMedia'] },
   ];
 
   return (
@@ -69,13 +36,6 @@ export const DigitalMarketingPackages = () => {
                 className={`package-card group relative ${plan.featured ? 'package-card-featured md:scale-[1.05] md:-mt-2' : ''}`}
                 style={{ overflow: 'visible' }}
               >
-                {plan.featured && (
-                  <span className="absolute -top-4 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 bg-gradient-to-r from-primary via-accent to-primary text-primary-foreground text-[10px] tracking-[0.28em] uppercase px-4 py-1.5 rounded-full font-bold shadow-[0_10px_28px_-6px_hsl(var(--primary)/0.7)] z-30 ring-1 ring-primary-foreground/20 whitespace-nowrap">
-                    <Star className="w-3 h-3 fill-current" />
-                    {t('packages.popular')}
-                  </span>
-                )}
-
                 <div className="relative z-10 flex flex-col flex-1">
                   {/* Icon header */}
                   <div className="flex items-center justify-center mb-5">
@@ -107,7 +67,7 @@ export const DigitalMarketingPackages = () => {
                         }`}>
                           <Check className="w-3 h-3" strokeWidth={3} />
                         </span>
-                        <span>{item}</span>
+                        <span>{t(item)}</span>
                       </li>
                     ))}
                   </ul>
@@ -133,31 +93,8 @@ export const EventPackages = () => {
   const { t } = useLanguage();
 
   const plans = [
-    {
-      icon: GraduationCap,
-      name: t('packages.school'),
-      items: [
-        'T-Shirts & Hats',
-        'Protocol Team',
-        'Full Video Coverage',
-        'Photo Streaming',
-        'Honorary Certificates',
-        'Graduation Event Branding',
-      ],
-    },
-    {
-      icon: Building2,
-      name: t('packages.university'),
-      items: [
-        'T-Shirts & Hats',
-        'Protocol Team',
-        'Full Video Coverage with Live Streaming',
-        'Photo Streaming',
-        'Graduation Boards',
-        'Honorary Certificates',
-        'Invitations (200 pcs)',
-      ],
-    },
+    { icon: ClipboardCheck, name: t('packages.school'), items: ['services.eventCoverage', 'services.eventCoverage.desc'] },
+    { icon: Ruler, name: t('packages.university'), items: ['services.brandMedia', 'services.brandMedia.desc'] },
   ];
 
   return (
@@ -185,7 +122,7 @@ export const EventPackages = () => {
                       <span className="mt-0.5 flex items-center justify-center w-5 h-5 rounded-full bg-primary/15 ring-1 ring-primary/30 shrink-0">
                         <Check className="w-3 h-3 text-primary" />
                       </span>
-                      <span>{item}</span>
+                      <span>{t(item)}</span>
                     </li>
                   ))}
                 </ul>

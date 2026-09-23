@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { MessageSquare, ClipboardList, Video, Send } from 'lucide-react';
+import { MapPin, ClipboardList, HardHat, ClipboardCheck } from 'lucide-react';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { SectionHeader } from './MediaComponents';
 
@@ -7,10 +7,10 @@ const ProcessSection = () => {
   const { t } = useLanguage();
 
   const steps = [
-    { icon: MessageSquare, title: t('process.step1'), desc: t('process.step1.desc') },
+    { icon: MapPin, title: t('process.step1'), desc: t('process.step1.desc') },
     { icon: ClipboardList, title: t('process.step2'), desc: t('process.step2.desc') },
-    { icon: Video, title: t('process.step3'), desc: t('process.step3.desc') },
-    { icon: Send, title: t('process.step4'), desc: t('process.step4.desc') },
+    { icon: HardHat, title: t('process.step3'), desc: t('process.step3.desc') },
+    { icon: ClipboardCheck, title: t('process.step4'), desc: t('process.step4.desc') },
   ];
 
   return (
