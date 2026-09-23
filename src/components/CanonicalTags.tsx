@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-const SITE = 'https://skylightmediasolutions.com';
 
 const upsert = (selector: string, create: () => HTMLElement) => {
   let el = document.head.querySelector(selector) as HTMLElement | null;
@@ -16,7 +15,7 @@ const CanonicalTags = () => {
   const { pathname } = useLocation();
   useEffect(() => {
     const path = pathname === '/' ? '/' : pathname.replace(/\/$/, '');
-    const url = `${SITE}${path}`;
+    const url = `${window.location.origin}${path}`;
 
     const canonical = upsert('link[rel="canonical"]', () => {
       const l = document.createElement('link');
