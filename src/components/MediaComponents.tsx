@@ -37,7 +37,7 @@ export const VideoPlayerModal = ({ isOpen, onClose, videoUrl, title }: VideoPlay
               videoUrl.match(/\.(mp4|webm|mov)/i) ? (
                 <video
                   src={videoUrl}
-                  className="w-full h-full object-contain bg-black"
+                  className="w-full h-full object-contain bg-background"
                   controls
                   autoPlay
                   playsInline
@@ -56,7 +56,7 @@ export const VideoPlayerModal = ({ isOpen, onClose, videoUrl, title }: VideoPlay
               <div className="w-full h-full flex items-center justify-center">
                 <div className="text-center">
                   <Play className="w-16 h-16 text-primary mx-auto mb-4" />
-                  <p className="text-muted-foreground">{title || 'Video placeholder'}</p>
+                  <p className="text-muted-foreground">{title || 'Media awaiting approval'}</p>
                 </div>
               </div>
             )}
@@ -70,12 +70,13 @@ export const VideoPlayerModal = ({ isOpen, onClose, videoUrl, title }: VideoPlay
 interface ProjectCardProps {
   title: string;
   category: string;
-  image: string;
+  image?: string;
   videoUrl?: string;
   onClick?: () => void;
+  placeholderLabel?: string;
 }
 
-export const ProjectCard = ({ title, category, image, videoUrl, onClick }: ProjectCardProps) => {
+export const ProjectCard = ({ title, category, image, videoUrl, onClick, placeholderLabel }: ProjectCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -104,13 +105,7 @@ export const ProjectCard = ({ title, category, image, videoUrl, onClick }: Proje
       onMouseLeave={handleLeave}
       onClick={onClick}
     >
-      <img
-        src={image}
-        alt={title}
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-        loading="lazy"
-        decoding="async"
-      />
+      {image ? <img src={image} alt={title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" decoding="async" /> : <div className="absolute inset-0 flex items-center justify-center text-primary/40"><span className="text-xs uppercase tracking-widest">{placeholderLabel}</span></div>}
       {videoUrl && (
         <video
           ref={videoRef}
