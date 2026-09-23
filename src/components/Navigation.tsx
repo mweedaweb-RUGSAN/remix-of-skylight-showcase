@@ -4,12 +4,10 @@ import { useLanguage } from '@/i18n/LanguageContext';
 import { Language } from '@/i18n/translations';
 import { Menu, X, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import skylightLogo from '@/assets/skylight-logo.jpg';
-import skylightWordmark from '@/assets/skylight-wordmark.png';
 
 const languages: { code: Language; label: string }[] = [
-  { code: 'en', label: 'English' },
   { code: 'so', label: 'Soomaali' },
+  { code: 'en', label: 'English' },
   { code: 'ar', label: 'العربية' },
 ];
 
@@ -50,18 +48,8 @@ const Navigation = () => {
     >
       <div className="container-custom flex items-center justify-between px-4 md:px-8 gap-4">
         {/* Logo + Wordmark — wordmark image preserves the exact logo typography */}
-        <Link to="/" className="flex items-center gap-3 group shrink-0" aria-label="Skylight Media Solutions">
-          <img
-            src={skylightLogo}
-            alt=""
-            aria-hidden
-            className="h-11 md:h-12 w-auto object-contain rounded-full transition-all duration-300 group-hover:drop-shadow-[0_0_18px_hsl(var(--primary)/0.6)]"
-          />
-          <img
-            src={skylightWordmark}
-            alt="Skylight Media Solutions"
-            className="h-7 md:h-9 w-auto object-contain transition-all duration-300 group-hover:drop-shadow-[0_0_14px_hsl(var(--primary)/0.55)]"
-          />
+        <Link to="/" className="flex items-center gap-3 group shrink-0" aria-label="Rugsan Construction Company">
+          <span className="flex flex-col"><span className="font-display font-bold text-foreground text-xl">RUGSAN</span><span className="text-[9px] text-primary">Architecture · Engineering · Construction</span></span>
         </Link>
 
         {/* Desktop Nav — translucent pill bar with brand-tinted links */}
@@ -88,6 +76,7 @@ const Navigation = () => {
         <div className="flex items-center gap-3">
           <div className="relative">
             <button
+              aria-label="Language"
               onClick={() => setIsLangOpen(!isLangOpen)}
               className="flex items-center gap-1.5 px-3 py-2 text-xs tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors"
             >
