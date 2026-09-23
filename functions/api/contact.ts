@@ -1,5 +1,5 @@
 // Cloudflare Pages Function: POST /api/contact
-// Sends contact form submissions to contact@skylightmediasolutions.com via Resend.
+// Sends contact form submissions to contact@rugsancco.com via Resend.
 // Requires environment variable RESEND_API_KEY (set in Cloudflare Pages → Settings → Environment variables).
 
 import { Resend } from 'resend';
@@ -12,14 +12,14 @@ interface ContactPayload {
   name?: string;
   email?: string;
   phone?: string;
-  company?: string;
+  location?: string;
   service?: string;
   subject?: string;
   message?: string;
 }
 
-const TO_EMAIL = 'contact@skylightmediasolutions.com';
-const FROM_EMAIL = 'Skylight Media Solutions <contact@skylightmediasolutions.com>';
+const TO_EMAIL = 'contact@rugsancco.com';
+const FROM_EMAIL = 'Rugsan Construction Company <contact@rugsancco.com>';
 const SUBJECT = 'New Website Contact Submission';
 
 const json = (data: unknown, status = 200) =>
@@ -54,7 +54,7 @@ function buildHtml(p: ContactPayload): string {
         ${row('Name', p.name)}
         ${row('Email', p.email)}
         ${row('Phone', p.phone)}
-        ${row('Company', p.company)}
+        ${row('Project location', p.location)}
         ${row('Service', p.service)}
         ${row('Subject', p.subject)}
         ${row('Message', p.message)}

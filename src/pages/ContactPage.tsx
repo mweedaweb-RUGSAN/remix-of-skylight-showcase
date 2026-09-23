@@ -1,7 +1,7 @@
 import { useState, FormEvent, ChangeEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/i18n/LanguageContext';
-import { Mail, Phone, MapPin, Facebook, Youtube, MessageCircle, Loader2, CheckCircle2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, MessageCircle, Loader2, CheckCircle2 } from 'lucide-react';
 import { toast } from 'sonner';
 
 
@@ -15,7 +15,7 @@ type FormState = {
   name: string;
   email: string;
   phone: string;
-  company: string;
+  location: string;
   service: string;
   subject: string;
   message: string;
@@ -25,7 +25,7 @@ const initialState: FormState = {
   name: '',
   email: '',
   phone: '',
-  company: '',
+  location: '',
   service: '',
   subject: '',
   message: '',
@@ -70,11 +70,11 @@ const ContactPage = () => {
     const result = await submitContact(formData);
     setSubmitting(false);
     if (result.success) {
-      toast.success('Message sent! We will get back to you shortly.');
+      toast.success(t('contact.sent'));
       setFormData(initialState);
       setSent(true);
     } else {
-      toast.error(result.error || 'Something went wrong. Please try again.');
+      toast.error(t('contact.failed'));
     }
   };
 
@@ -121,17 +121,17 @@ const ContactPage = () => {
                         <CheckCircle2 className="w-20 h-20 text-primary relative drop-shadow-[0_0_20px_hsl(var(--primary)/0.6)]" strokeWidth={1.5} />
                       </motion.div>
                       <h3 className="text-foreground font-display text-2xl md:text-3xl font-semibold">
-                        Message Sent
+                        {t('contact.sent')}
                       </h3>
                       <p className="text-muted-foreground max-w-sm">
-                        Thank you for reaching out. Our team will get back to you within one business day.
+                        {t('contact.sent.desc')}
                       </p>
                       <button
                         type="button"
                         onClick={() => setSent(false)}
                         className="btn-outline mt-2"
                       >
-                        Send Another Message
+                        {t('contact.again')}
                       </button>
                     </motion.div>
                   )}
@@ -163,7 +163,7 @@ const ContactPage = () => {
                         />
                       </div>
                       <div>
-                        <label className="text-foreground text-sm font-medium mb-2 block">Phone</label>
+                        <label className="text-foreground text-sm font-medium mb-2 block">{t('contact.phone')}</label>
                         <input
                           type="tel"
                           name="phone"
@@ -173,28 +173,28 @@ const ContactPage = () => {
                         />
                       </div>
                       <div>
-                        <label className="text-foreground text-sm font-medium mb-2 block">Company</label>
+                        <label className="text-foreground text-sm font-medium mb-2 block">{t('contact.location')}</label>
                         <input
                           type="text"
-                          name="company"
-                          value={formData.company}
+                          name="location"
+                          value={formData.location}
                           onChange={handleChange}
                           className="w-full bg-secondary/60 border border-border rounded-md px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_hsl(var(--primary)/0.18)] transition-all"
                         />
                       </div>
                       <div>
-                        <label className="text-foreground text-sm font-medium mb-2 block">Service</label>
+                        <label className="text-foreground text-sm font-medium mb-2 block">{t('contact.service')}</label>
                         <input
                           type="text"
                           name="service"
                           value={formData.service}
                           onChange={handleChange}
-                          placeholder="e.g. Web Design, Branding"
+                          
                           className="w-full bg-secondary/60 border border-border rounded-md px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_hsl(var(--primary)/0.18)] transition-all"
                         />
                       </div>
                       <div>
-                        <label className="text-foreground text-sm font-medium mb-2 block">Subject</label>
+                        <label className="text-foreground text-sm font-medium mb-2 block">{t('contact.subject')}</label>
                         <input
                           type="text"
                           name="subject"
@@ -222,10 +222,10 @@ const ContactPage = () => {
                     >
                       {submitting ? (
                         <>
-                          <Loader2 className="w-4 h-4 animate-spin" /> Sending...
+                          <Loader2 className="w-4 h-4 animate-spin" /> {t('contact.sending')}
                         </>
                       ) : (
-                        'Send Message'
+                        t('contact.send')
                       )}
                     </button>
                   </form>
@@ -247,7 +247,7 @@ const ContactPage = () => {
                       <MapPin className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <p className="text-foreground font-medium text-sm">Address</p>
+                      <p className="text-foreground font-medium text-sm">{t('contact.address')}</p>
                       <p className="text-muted-foreground text-sm">{t('contact.info.address')}</p>
                     </div>
                   </div>
@@ -256,11 +256,12 @@ const ContactPage = () => {
                       <Phone className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <p className="text-foreground font-medium text-sm">Phone & WhatsApp</p>
+                      <p className="text-foreground font-medium text-sm">{t('contact.phone.label')}</p>
                       <div className="flex items-center gap-3 text-muted-foreground text-sm flex-wrap">
-                        <a href="tel:+252619977885" className="hover:text-primary transition-colors">+252 619 977 885</a>
+                        <a href="tel:+252615969854" className="hover:text-primary transition-colors">+252-615969854</a>
+                        <a href="tel:+252614044302" className="hover:text-primary transition-colors">+252-614044302</a>
                         <a
-                          href="https://wa.me/252619977885"
+                          href="https://wa.me/252615969854"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-1 text-primary hover:drop-shadow-[0_0_10px_hsl(var(--primary)/0.7)] transition"
@@ -276,8 +277,8 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <p className="text-foreground font-medium text-sm">Email</p>
-                      <a href="mailto:info@skylightmediasolutions.com" className="text-muted-foreground text-sm hover:text-primary transition-colors break-all">
-                        info@skylightmediasolutions.com
+                      <a href="mailto:info@rugsancco.com" className="text-muted-foreground text-sm hover:text-primary transition-colors break-all">
+                        info@rugsancco.com
                       </a>
                     </div>
                   </div>
@@ -289,9 +290,8 @@ const ContactPage = () => {
                 <h3 className="text-foreground font-display text-xl font-semibold mb-4">{t('footer.connect')}</h3>
                 <div className="flex gap-3">
                   {[
-                    { icon: Facebook, href: 'https://www.facebook.com/SkylightMediaSolutions', label: 'Facebook' },
-                    { icon: Youtube, href: 'https://youtube.com/@iimaansax?si=C6qsSp0l8nZs3plN', label: 'YouTube' },
-                    { icon: TiktokIcon, href: 'https://www.tiktok.com/@skylightmediamolution?_r=1&_t=ZS-95eII2Pt6Fl', label: 'TikTok' },
+                    { icon: Facebook, href: 'https://www.facebook.com/Rugsancco', label: 'Facebook' },
+                    { icon: TiktokIcon, href: 'https://www.tiktok.com/@rugsancco', label: 'TikTok' },
                   ].map(({ icon: Icon, href, label }, i) => (
                     <a
                       key={i}
@@ -310,8 +310,8 @@ const ContactPage = () => {
               {/* Map */}
               <div className="glass-card aspect-video rounded-lg overflow-hidden">
                 <iframe
-                  title="Skylight Media Solutions Location"
-                  src="https://www.google.com/maps?q=Howlwadaag+Street+Mogadishu&output=embed"
+                  title="Rugsan Construction Company Location"
+                  src="https://www.google.com/maps?q=Waaberi+Mall+Waabari+Mogadishu&output=embed"
                   className="w-full h-full border-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
