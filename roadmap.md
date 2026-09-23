@@ -1,0 +1,5 @@
+- [ ] Replace Skylight text across existing pages with multilingual Rugsan content, preserving layout and behavior.
+- [ ] Replace unsupported work, testimonials, statistics and media with clearly labeled neutral placeholders.
+- [ ] Update contact recipient, public details, metadata and links without changing provider behavior.
+- [ ] Verify language switching, filtering, modal behavior and desktop/mobile layout.
+- [ ] Await approved Rugsan tagline, logo/media, founder image and verified email sender before publishing their assets or claims.

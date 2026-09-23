@@ -1,140 +1,26 @@
+import type { Language } from '@/i18n/translations';
+
+export type WorkCategory = 'Residential Design' | 'Interior Design' | 'Construction Progress' | 'Completed Work / Handover' | 'Engineering / Technical' | 'Company Activity';
 export interface PortfolioItem {
   id: number;
   slug: string;
-  title: string;
-  category: 'EVENT' | 'PROMOTIONAL' | 'COMMERCIAL' | 'BRAND CAMPAIGN';
-  description: string;
-  videoUrl: string;
-  thumbnail: string;
+  title: Record<Language, string>;
+  category: WorkCategory;
+  description: Record<Language, string>;
+  /** Working titles are descriptive labels, not official project names. */
+  titleStatus: 'working-title';
+  /** Planned file only; never used as a URL until company-approved media is supplied. */
+  mediaCandidate: string;
   featured: boolean;
 }
 
-// Append ImageKit "original" flag so videos are served from the source file
-// without consuming the account's video-transformation quota.
-const orig = (url: string) => (url.includes('?') ? `${url}&tr=orig-true` : `${url}?tr=orig-true`);
-
 export const portfolioItems: PortfolioItem[] = [
-  {
-    id: 1,
-    slug: 'community-gala-highlights',
-    title: 'Community Gala Highlights',
-    category: 'EVENT',
-    description:
-      'Professional event coverage capturing the atmosphere, key moments, and audience experience of a high-profile community gala.',
-    videoUrl: orig(
-      'https://ik.imagekit.io/byyg2uqjs/Portfolio/Event%20Community%20Gala%20Highlights.mp4'
-    ),
-    thumbnail:
-      'https://ik.imagekit.io/byyg2uqjs/Portfolio%20Thumbnails/Communitu%20Gala%20Highlights.webp?updatedAt=1776565020293',
-    featured: true,
-  },
-  {
-    id: 2,
-    slug: 'business-grand-opening-promo',
-    title: 'Business Grand Opening Promo',
-    category: 'PROMOTIONAL',
-    description:
-      'A dynamic promotional video showcasing the excitement and branding of a business grand opening event.',
-    videoUrl: orig(
-      'https://ik.imagekit.io/byyg2uqjs/Portfolio/PROMOTIONAL%20business%20grand%20opening%20promo.mp4?updatedAt=1776439130657'
-    ),
-    thumbnail:
-      'https://ik.imagekit.io/byyg2uqjs/Portfolio%20Thumbnails/Business%20Grand%20Opening%20Promo.webp?updatedAt=1776565020537',
-    featured: true,
-  },
-  {
-    id: 3,
-    slug: 'conference-seminar-highlights',
-    title: 'Conference & Seminar Highlights',
-    category: 'EVENT',
-    description:
-      'Professional multi-camera coverage capturing keynote speakers, audience engagement, and the energy of a major conference.',
-    videoUrl: orig(
-      'https://ik.imagekit.io/byyg2uqjs/Portfolio/Event%20conference%20and%20seminar%20highlights.mp4?updatedAt=1776439142998'
-    ),
-    thumbnail:
-      'https://ik.imagekit.io/byyg2uqjs/Portfolio%20Thumbnails/Conference%20and%20Seminar%20Highlights.webp?updatedAt=1776565019999',
-    featured: true,
-  },
-  {
-    id: 4,
-    slug: 'real-estate-showcase',
-    title: 'Real Estate Showcase',
-    category: 'COMMERCIAL',
-    description:
-      'A cinematic real estate promotional video highlighting property design, architecture, and lifestyle appeal.',
-    videoUrl: orig(
-      'https://ik.imagekit.io/byyg2uqjs/Portfolio/Commercial%20Real%20Estate%20Showcase.mp4?updatedAt=1776439152571'
-    ),
-    thumbnail:
-      'https://ik.imagekit.io/byyg2uqjs/Portfolio%20Thumbnails/Real%20Estate%20Showcase.webp?updatedAt=1776565020305',
-    featured: true,
-  },
-  {
-    id: 5,
-    slug: 'product-launch-campaign',
-    title: 'Product Launch Campaign',
-    category: 'BRAND CAMPAIGN',
-    description:
-      'A visually compelling product launch campaign designed to introduce a new brand product to the market.',
-    videoUrl: orig(
-      'https://ik.imagekit.io/byyg2uqjs/Portfolio/Brand%20Campaigns-Product%20Launch%20campaign.mp4?updatedAt=1776439119590'
-    ),
-    thumbnail:
-      'https://ik.imagekit.io/byyg2uqjs/Portfolio%20Thumbnails/Product%20launch%20campaign.webp?updatedAt=1776565020709',
-    featured: true,
-  },
-  {
-    id: 6,
-    slug: 'corporate-brand-story',
-    title: 'Corporate Brand Story',
-    category: 'COMMERCIAL',
-    description:
-      'A brand storytelling film that communicates company values, mission, and business identity.',
-    videoUrl: orig(
-      'https://ik.imagekit.io/byyg2uqjs/Portfolio/Commercial%20Corporate%20Brand%20Story.mp4?updatedAt=1776439119414'
-    ),
-    thumbnail:
-      'https://ik.imagekit.io/byyg2uqjs/Portfolio%20Thumbnails/Corporate%20Brand%20Story.webp?updatedAt=1776565020051',
-    featured: true,
-  },
-  {
-    id: 7,
-    slug: 'school-documentary',
-    title: 'School Documentary',
-    category: 'PROMOTIONAL',
-    description:
-      'A documentary-style production showcasing a school’s programs, achievements, and learning environment.',
-    videoUrl: orig(
-      'https://ik.imagekit.io/byyg2uqjs/Portfolio/Documentary%20School.mp4?updatedAt=1776439159364'
-    ),
-    thumbnail:
-      'https://ik.imagekit.io/byyg2uqjs/Portfolio%20Thumbnails/Documentary%20School%20Story.webp?updatedAt=1776565020602',
-    featured: false,
-  },
-  {
-    id: 8,
-    slug: 'non-profit-awareness-video',
-    title: 'Non-Profit Awareness Video',
-    category: 'PROMOTIONAL',
-    description:
-      'A social awareness campaign film designed to highlight the mission and impact of a non-profit organization.',
-    videoUrl: orig(
-      'https://ik.imagekit.io/byyg2uqjs/Portfolio/Promotional%20Non%20profit%20awareness%20video.mp4?updatedAt=1776439159655'
-    ),
-    thumbnail:
-      'https://ik.imagekit.io/byyg2uqjs/Portfolio%20Thumbnails/Non-Profit%20Awareness.webp?updatedAt=1776565020385',
-    featured: false,
-  },
+  { id: 1, slug: 'four-bedroom-villa-handover', title: { so: 'Wareejinta Guri Afar Qol ah', en: 'Four-Bedroom Villa Handover', ar: 'تسليم فيلا بأربع غرف نوم' }, category: 'Completed Work / Handover', description: { so: 'Guri leh afar qol jiif, jiko, laba musqulood, baarkin ballaaran iyo qurxin casri ah. Qoraalka shirkaddu baahisay wuxuu sheegayaa in furayaasha loo wareejiyay mulkiilaha.', en: 'Four-bedroom villa with kitchen, two bathrooms, spacious parking and modern decoration. Company-published material describes key handover to the owner.', ar: 'فيلا تضم أربع غرف نوم ومطبخاً وحمامين وموقف سيارات واسعاً وتشطيبات عصرية. تشير المواد المنشورة من الشركة إلى تسليم المفاتيح للمالك.' }, titleStatus: 'working-title', mediaCandidate: 'rugsan-home-hero-four-bedroom-handover.mp4', featured: true },
+  { id: 2, slug: 'six-bedroom-villa-handover', title: { so: 'Dhammaystirka iyo Wareejinta Guri Lix Qol ah', en: 'Six-Bedroom Villa Completion and Handover', ar: 'اكتمال وتسليم فيلا بست غرف نوم' }, category: 'Completed Work / Handover', description: { so: 'Guri leh lix qol jiif, jiko, laba musqulood, barandho, deyr weyn iyo qurxin heer sare ah. Qoraalka shirkaddu baahisay wuxuu tilmaamayaa dhammaystir iyo wareejin.', en: 'Six-bedroom villa with kitchen, two bathrooms, veranda, large yard and high-grade decoration. Company-published material describes completion and handover.', ar: 'فيلا تضم ست غرف نوم ومطبخاً وحمامين وشرفة وساحة واسعة وتشطيبات عالية الجودة. تشير المواد المنشورة من الشركة إلى اكتمالها وتسليمها.' }, titleStatus: 'working-title', mediaCandidate: 'rugsan-featured-six-bedroom-villa.mp4', featured: true },
+  { id: 3, slug: 'modern-villa-13x13', title: { so: 'Naqshadda Guri Casri ah 13 × 13 m', en: 'Modern Villa 13 × 13 m', ar: 'تصميم فيلا عصرية 13 × 13 م' }, category: 'Residential Design', description: { so: 'Naqshad guri cabbirkiisu yahay 13 × 13 m oo leh shan qol jiif, jiko iyo laba musqulood. Ilaha la hayo waxay tilmaamayaan naqshadda, ee ma xaqiijinayaan dhammaystir.', en: 'Design specification for a 13 × 13 m villa with five bedrooms, kitchen and two bathrooms. Completion is not documented.', ar: 'مواصفات تصميم فيلا بمساحة 13 × 13 م تضم خمس غرف نوم ومطبخاً وحمامين. لا تتوفر معلومات تؤكد اكتمال البناء.' }, titleStatus: 'working-title', mediaCandidate: 'rugsan-project-13x13-villa.mp4', featured: true },
+  { id: 4, slug: 'two-homes-20x10', title: { so: 'Laba Guri oo ku yaal Dhul 20 × 10 m', en: 'Two Homes on a 20 × 10 m Plot', ar: 'منزلان على أرض بمساحة 20 × 10 م' }, category: 'Residential Design', description: { so: 'Sharaxaad naqshad iyo dhisme oo ku saabsan laba guri oo leh qaybo qolal la tilmaamay. Dhammaystir iyo goob gaar ah lama xaqiijin.', en: 'Design and build description for two homes with specified room programmes. Completion and location are not documented.', ar: 'وصف للتصميم والبناء لمنزلين مع توزيع محدد للغرف. لا تتوفر معلومات مؤكدة عن الاكتمال أو الموقع.' }, titleStatus: 'working-title', mediaCandidate: 'rugsan-project-20x10-two-homes.mp4', featured: true },
+  { id: 5, slug: 'g-plus-one-phases', title: { so: 'Marxaladaha Dhismaha G+1', en: 'G+1 Construction Phases', ar: 'مراحل بناء مبنى أرضي وطابق أول' }, category: 'Construction Progress', description: { so: 'Muuqaallo muujinaya marxaladaha dhismaha dhisme G+1 ah. Dhammaystir lama xaqiijin.', en: 'Construction-phase material showing a G+1 structure. Completion is not documented.', ar: 'مواد توثق مراحل بناء مبنى أرضي وطابق أول. لا تتوفر معلومات تؤكد اكتماله.' }, titleStatus: 'working-title', mediaCandidate: 'rugsan-construction-g-plus-one-phases.mp4', featured: true },
+  { id: 6, slug: 'coffee-shop-interior-concept', title: { so: 'Fikradda Naqshadda Gudaha ee Maqaaxi', en: 'Coffee-Shop Interior Design Concept', ar: 'تصور تصميم داخلي لمقهى' }, category: 'Interior Design', description: { so: 'Fikrad iyo animation naqshad gudaha ah oo muujinaya awoodda naqshadeynta. Tani waa FIKRAD, mana aha mashruuc dhisme oo dhammaystiran.', en: 'Modern coffee-shop interior concept and animation demonstrating interior design capability. CONCEPT only; not a completed construction project.', ar: 'تصور ورسوم متحركة لتصميم داخلي حديث لمقهى، يوضح قدرات التصميم الداخلي. تصور مفاهيمي فقط، وليس مشروع بناء مكتملاً.' }, titleStatus: 'working-title', mediaCandidate: 'rugsan-interior-coffee-shop-concept.mp4', featured: true },
 ];
-
-export const portfolioCategories = [
-  'All',
-  'EVENT',
-  'PROMOTIONAL',
-  'COMMERCIAL',
-  'BRAND CAMPAIGN',
-] as const;
-
-export const getFeaturedPortfolio = (limit = 6) =>
-  portfolioItems.filter((p) => p.featured).slice(0, limit);
+export const portfolioCategories: Array<'All' | WorkCategory> = ['All', 'Residential Design', 'Interior Design', 'Construction Progress', 'Completed Work / Handover', 'Engineering / Technical', 'Company Activity'];
+export const getFeaturedPortfolio = (limit = 6) => portfolioItems.filter(p => p.featured).slice(0, limit);
