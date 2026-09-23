@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { ArrowRight, ChevronDown, Quote, Building2, DraftingCompass, HardHat, Files, ClipboardCheck, Ruler } from 'lucide-react';
 import { useState } from 'react';
-import heroBg from '@/assets/hero-bg.jpg';
+import { getFeaturedPortfolio, type PortfolioItem } from '@/data/portfolio';
+import { categoryKeys } from '@/data/workLabels';
 
 import { ProjectCard, VideoPlayerModal, SectionHeader } from '@/components/MediaComponents';
 import WhyChooseUs from '@/components/WhyChooseUs';
@@ -41,7 +42,7 @@ const HomePage = () => {
           animate={{ scale: 1 }}
           transition={{ duration: 8, ease: 'easeOut' }}
         >
-          <img src={heroBg} alt="" className="w-full h-full object-cover opacity-20" />
+          <div className="w-full h-full bg-surface" />
           {/* Cinematic dark layer + brand-tinted gradient for stronger text readability */}
           <div className="absolute inset-0 bg-background/55" />
           <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background/85" />
@@ -113,7 +114,7 @@ const HomePage = () => {
                 key={item.id}
                 title={item.title[language]}
                 category={t(categoryKeys[item.category])}
-                image={undefined}
+                placeholderLabel={t('portfolio.mediaPending')}
                 videoUrl={undefined}
                 onClick={() => {
                   setSelectedProduction(item);
@@ -198,7 +199,7 @@ const HomePage = () => {
       {/* CTA */}
       <section className="section-padding relative overflow-hidden">
         <div className="absolute inset-0 opacity-25">
-          <img src={heroBg} alt="" className="w-full h-full object-cover" loading="lazy" />
+          <div className="w-full h-full bg-surface" />
         </div>
         {/* Cinematic gradient overlay */}
         <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background/95" />
@@ -228,7 +229,7 @@ const HomePage = () => {
       <VideoPlayerModal
         isOpen={videoModalOpen}
         onClose={() => setVideoModalOpen(false)}
-        videoUrl={selectedProduction?.videoUrl}
+        videoUrl={undefined}
         title={selectedProduction?.title[language] || t('portfolio.mediaPending')}
       />
     </>

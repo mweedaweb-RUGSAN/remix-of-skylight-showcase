@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { SectionHeader } from '@/components/MediaComponents';
 import { DigitalMarketingPackages, EventPackages } from '@/components/Packages';
 import { Building2, DraftingCompass, HardHat, Files, ClipboardCheck, Ruler, ArrowRight } from 'lucide-react';
-import serviceVideo from '@/assets/service-video.jpg';
 
 const ServicesPage = () => {
   const { t } = useLanguage();
@@ -24,7 +23,7 @@ const ServicesPage = () => {
     <>
       <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center">
         <div className="absolute inset-0">
-          <img src={serviceVideo} alt="Our Services" className="w-full h-full object-cover" loading="lazy" />
+          <div className="w-full h-full bg-surface" />
           <div className="absolute inset-0 cinematic-overlay" />
           <div className="absolute inset-0 bg-background/50" />
         </div>
