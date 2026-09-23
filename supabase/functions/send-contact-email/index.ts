@@ -1,14 +1,14 @@
 import { corsHeaders } from 'npm:@supabase/supabase-js@2/cors';
 
 const GATEWAY_URL = 'https://connector-gateway.lovable.dev/resend';
-const TO_EMAIL = 'contact@skylightmediasolutions.com';
-const FROM_EMAIL = 'Skylight Media Solutions <contact@skylightmediasolutions.com>';
+const TO_EMAIL = 'contact@rugsancco.com';
+const FROM_EMAIL = 'Rugsan Construction Company <contact@rugsancco.com>';
 
 interface ContactPayload {
   name?: string;
   email?: string;
   phone?: string;
-  company?: string;
+  location?: string;
   service?: string;
   subject?: string;
   message?: string;
@@ -35,7 +35,7 @@ function buildHtml(p: ContactPayload): string {
         ${row('Name', p.name)}
         ${row('Email', p.email)}
         ${row('Phone', p.phone)}
-        ${row('Company', p.company)}
+        ${row('Project location', p.location)}
         ${row('Service', p.service)}
         ${row('Subject', p.subject)}
         ${row('Message', p.message)}

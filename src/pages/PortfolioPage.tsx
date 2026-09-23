@@ -3,21 +3,13 @@ import { useState } from 'react';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { ProjectCard, VideoPlayerModal } from '@/components/MediaComponents';
 import { portfolioItems, portfolioCategories, type PortfolioItem } from '@/data/portfolio';
-import portfolioGrid from '@/assets/portfolio-grid.jpg';
+import { categoryKeys } from '@/data/workLabels';
 
 const PortfolioPage = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [videoOpen, setVideoOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<PortfolioItem | null>(null);
-
-  const catKeys: Record<string, string> = {
-    'All': 'portfolio.all',
-    'COMMERCIAL': 'portfolio.commercial',
-    'PROMOTIONAL': 'portfolio.promotional',
-    'EVENT': 'portfolio.events',
-    'BRAND CAMPAIGN': 'portfolio.brandCampaigns',
-  };
 
   const filtered = activeCategory === 'All'
     ? portfolioItems
@@ -27,7 +19,7 @@ const PortfolioPage = () => {
     <>
       <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center">
         <div className="absolute inset-0">
-          <img src={portfolioGrid} alt="Our Work" className="w-full h-full object-cover" loading="lazy" />
+          <div className="w-full h-full bg-surface" />
           <div className="absolute inset-0 cinematic-overlay" />
           <div className="absolute inset-0 bg-background/50" />
         </div>
@@ -54,7 +46,7 @@ const PortfolioPage = () => {
                     : 'bg-secondary text-muted-foreground hover:text-foreground'
                 }`}
               >
-                {catKeys[cat] ? t(catKeys[cat]) : cat}
+                {cat === 'All' ? t('portfolio.all') : t(categoryKeys[cat])}
               </button>
             ))}
           </div>
@@ -71,14 +63,14 @@ const PortfolioPage = () => {
                   transition={{ duration: 0.3 }}
                 >
                   <ProjectCard
-                    title={project.title}
-                    category={project.category}
-                    image={project.thumbnail}
-                    videoUrl={project.videoUrl}
+                    title={project.title[language]}
+                    category={`${t(categoryKeys[project.category])} · ${t('portfolio.working')}`}
+                    placeholderLabel={t('portfolio.mediaPending')}
+                    videoUrl={undefined}
                     onClick={() => { setSelectedProject(project); setVideoOpen(true); }}
                   />
                   <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                    {project.description}
+                    {project.description[language]}
                   </p>
                 </motion.div>
               ))}
@@ -90,8 +82,8 @@ const PortfolioPage = () => {
       <VideoPlayerModal
         isOpen={videoOpen}
         onClose={() => setVideoOpen(false)}
-        videoUrl={selectedProject?.videoUrl}
-        title={selectedProject?.title}
+        videoUrl={undefined}
+        title={selectedProject?.title[language]}
       />
     </>
   );

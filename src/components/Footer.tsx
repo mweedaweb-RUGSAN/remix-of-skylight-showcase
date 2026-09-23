@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/i18n/LanguageContext';
-import { Facebook, Youtube, Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
+import { Facebook, Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
 
 // Inline TikTok icon (lucide doesn't ship one)
 const TiktokIcon = ({ className }: { className?: string }) => (
@@ -9,8 +9,6 @@ const TiktokIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 import { useState } from 'react';
-import skylightLogo from '@/assets/skylight-logo.jpg';
-import skylightWordmark from '@/assets/skylight-wordmark.png';
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -18,7 +16,7 @@ const Footer = () => {
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setEmail('');
+    window.location.href = `mailto:info@rugsancco.com?subject=${encodeURIComponent('Updates enquiry')}&body=${encodeURIComponent(email)}`;
   };
 
   return (
@@ -42,27 +40,16 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
           {/* Company Info */}
           <div className="space-y-4">
-            <Link to="/" aria-label="Skylight Media Solutions" className="inline-flex items-center gap-3 group">
-              <img
-                src={skylightLogo}
-                alt=""
-                aria-hidden
-                className="h-11 w-auto object-contain rounded-full ring-1 ring-primary/30 transition-all duration-300 group-hover:ring-primary/60 group-hover:drop-shadow-[0_0_18px_hsl(var(--primary)/0.55)]"
-              />
-              <img
-                src={skylightWordmark}
-                alt="Skylight Media Solutions"
-                className="h-7 md:h-8 w-auto object-contain transition-all duration-300 group-hover:drop-shadow-[0_0_14px_hsl(var(--primary)/0.55)]"
-              />
+            <Link to="/" aria-label="Rugsan Construction Company" className="inline-flex items-center gap-3 group">
+              <span className="flex flex-col"><span className="font-display font-bold text-foreground text-xl">RUGSAN</span><span className="text-[9px] text-primary">{t('footer.description')}</span></span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
               {t('footer.description')}
             </p>
             <div className="flex gap-2.5">
               {[
-                { icon: Facebook, href: 'https://www.facebook.com/SkylightMediaSolutions', label: 'Facebook' },
-                { icon: Youtube, href: 'https://youtube.com/@iimaansax?si=C6qsSp0l8nZs3plN', label: 'YouTube' },
-                { icon: TiktokIcon, href: 'https://www.tiktok.com/@skylightmediamolution?_r=1&_t=ZS-95eII2Pt6Fl', label: 'TikTok' },
+                { icon: Facebook, href: 'https://www.facebook.com/Rugsancco', label: 'Facebook' },
+                { icon: TiktokIcon, href: 'https://www.tiktok.com/@rugsancco', label: 'TikTok' },
               ].map(({ icon: Icon, href, label }, i) => (
                 <a
                   key={i}
@@ -168,10 +155,12 @@ const Footer = () => {
                   <Phone className="w-3.5 h-3.5 text-primary" />
                 </span>
                 <div className="flex items-center gap-2 flex-wrap">
-                  <a href="tel:+252619977885" className="hover:text-primary transition-colors">+252 619 977 885</a>
+                  <a href="tel:+252615969854" className="hover:text-primary transition-colors">+252-615969854</a>
+                  <span className="opacity-40">·</span>
+                  <a href="tel:+252614044302" className="hover:text-primary transition-colors">+252-614044302</a>
                   <span className="opacity-40">·</span>
                   <a
-                    href="https://wa.me/252619977885"
+                    href="https://wa.me/252615969854"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-primary hover:drop-shadow-[0_0_10px_hsl(var(--primary)/0.7)] transition"
@@ -184,8 +173,8 @@ const Footer = () => {
                 <span className="w-7 h-7 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
                   <Mail className="w-3.5 h-3.5 text-primary" />
                 </span>
-                <a href="mailto:info@skylightmediasolutions.com" className="hover:text-primary transition-colors break-all">
-                  info@skylightmediasolutions.com
+                <a href="mailto:info@rugsancco.com" className="hover:text-primary transition-colors break-all">
+                  info@rugsancco.com
                 </a>
               </div>
             </div>

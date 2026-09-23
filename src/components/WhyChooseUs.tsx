@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Award, Camera, Sparkles, Clock, Layers } from 'lucide-react';
+import { Layers, Building2, Sparkles, Home, ClipboardCheck } from 'lucide-react';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { SectionHeader } from './MediaComponents';
 
@@ -7,11 +7,11 @@ const WhyChooseUs = () => {
   const { t } = useLanguage();
 
   const items = [
-    { icon: Award, title: t('why.experienced'), desc: t('why.experienced.desc') },
-    { icon: Camera, title: t('why.equipment'), desc: t('why.equipment.desc') },
+    { icon: Layers, title: t('why.experienced'), desc: t('why.experienced.desc') },
+    { icon: Building2, title: t('why.equipment'), desc: t('why.equipment.desc') },
     { icon: Sparkles, title: t('why.creative'), desc: t('why.creative.desc') },
-    { icon: Clock, title: t('why.reliable'), desc: t('why.reliable.desc') },
-    { icon: Layers, title: t('why.complete'), desc: t('why.complete.desc') },
+    { icon: Home, title: t('why.reliable'), desc: t('why.reliable.desc') },
+    { icon: ClipboardCheck, title: t('why.complete'), desc: t('why.complete.desc') },
   ];
 
   return (
