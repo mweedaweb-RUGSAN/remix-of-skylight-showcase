@@ -16,7 +16,7 @@ const Footer = () => {
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setEmail('');
+    window.location.href = `mailto:info@rugsancco.com?subject=${encodeURIComponent('Updates enquiry')}&body=${encodeURIComponent(email)}`;
   };
 
   return (
