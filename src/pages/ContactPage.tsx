@@ -167,6 +167,7 @@ const ContactPage = () => {
                         <input
                           type="tel"
                           name="phone"
+                          required
                           value={formData.phone}
                           onChange={handleChange}
                           className="w-full bg-secondary/60 border border-border rounded-md px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_hsl(var(--primary)/0.18)] transition-all"
@@ -177,6 +178,7 @@ const ContactPage = () => {
                         <input
                           type="text"
                           name="location"
+                          required
                           value={formData.location}
                           onChange={handleChange}
                           className="w-full bg-secondary/60 border border-border rounded-md px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_hsl(var(--primary)/0.18)] transition-all"
@@ -187,6 +189,7 @@ const ContactPage = () => {
                         <input
                           type="text"
                           name="service"
+                          required
                           value={formData.service}
                           onChange={handleChange}
                           
@@ -198,6 +201,7 @@ const ContactPage = () => {
                         <input
                           type="text"
                           name="subject"
+                          required
                           value={formData.subject}
                           onChange={handleChange}
                           className="w-full bg-secondary/60 border border-border rounded-md px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_hsl(var(--primary)/0.18)] transition-all"

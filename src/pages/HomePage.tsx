@@ -72,7 +72,7 @@ const HomePage = () => {
               <span className="block text-foreground">Rugsan</span>
               <span className="block gradient-text">Construction Company</span>
               <span className="block text-foreground/90 text-3xl md:text-4xl lg:text-5xl mt-4 font-display italic font-medium">
-                Architecture · Engineering · Construction
+                {t('footer.description')}
               </span>
             </h1>
             <p className="text-muted-foreground text-base md:text-lg lg:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">{t('hero.subheadline')}</p>
@@ -113,7 +113,7 @@ const HomePage = () => {
               <ProjectCard
                 key={item.id}
                 title={item.title[language]}
-                category={t(categoryKeys[item.category])}
+                category={`${t(categoryKeys[item.category])} · ${t('portfolio.working')}`}
                 placeholderLabel={t('portfolio.mediaPending')}
                 videoUrl={undefined}
                 onClick={() => {

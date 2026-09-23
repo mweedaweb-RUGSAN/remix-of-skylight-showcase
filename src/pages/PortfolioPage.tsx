@@ -64,8 +64,8 @@ const PortfolioPage = () => {
                 >
                   <ProjectCard
                     title={project.title[language]}
-                    category={t(categoryKeys[project.category])}
-                    image={undefined}
+                    category={`${t(categoryKeys[project.category])} · ${t('portfolio.working')}`}
+                    placeholderLabel={t('portfolio.mediaPending')}
                     videoUrl={undefined}
                     onClick={() => { setSelectedProject(project); setVideoOpen(true); }}
                   />

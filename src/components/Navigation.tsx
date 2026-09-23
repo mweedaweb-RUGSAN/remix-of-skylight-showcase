@@ -49,7 +49,7 @@ const Navigation = () => {
       <div className="container-custom flex items-center justify-between px-4 md:px-8 gap-4">
         {/* Company wordmark placeholder until an approved Rugsan logo is available */}
         <Link to="/" className="flex items-center gap-3 group shrink-0" aria-label="Rugsan Construction Company">
-          <span className="flex flex-col"><span className="font-display font-bold text-foreground text-xl">RUGSAN</span><span className="text-[9px] text-primary">Architecture · Engineering · Construction</span></span>
+          <span className="flex flex-col"><span className="font-display font-bold text-foreground text-xl">RUGSAN</span><span className="text-[9px] text-primary">{t('footer.description')}</span></span>
         </Link>
 
         {/* Desktop Nav — translucent pill bar with brand-tinted links */}

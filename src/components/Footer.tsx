@@ -41,7 +41,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <Link to="/" aria-label="Rugsan Construction Company" className="inline-flex items-center gap-3 group">
-              <span className="flex flex-col"><span className="font-display font-bold text-foreground text-xl">RUGSAN</span><span className="text-[9px] text-primary">Architecture · Engineering · Construction</span></span>
+              <span className="flex flex-col"><span className="font-display font-bold text-foreground text-xl">RUGSAN</span><span className="text-[9px] text-primary">{t('footer.description')}</span></span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
               {t('footer.description')}
