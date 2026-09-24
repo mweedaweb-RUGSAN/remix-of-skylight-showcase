@@ -15,7 +15,7 @@ const CanonicalTags = () => {
   const { pathname } = useLocation();
   useEffect(() => {
     const path = pathname === '/' ? '/' : pathname.replace(/\/$/, '');
-    const url = `${window.location.origin}${path}`;
+    const url = `https://rugsancco.com${path}`;
 
     const canonical = upsert('link[rel="canonical"]', () => {
       const l = document.createElement('link');

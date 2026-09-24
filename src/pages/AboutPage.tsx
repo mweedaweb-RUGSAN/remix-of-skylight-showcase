@@ -89,7 +89,7 @@ const AboutPage = () => {
         <div className="container-custom">
           <SectionHeader title={t('about.team.title')} subtitle={t('about.team.subtitle')} />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="glass-card overflow-hidden group"><div className="aspect-[3/4] bg-secondary relative overflow-hidden flex items-center justify-center text-muted-foreground">{t('about.team.subtitle')}</div><div className="p-6 text-center"><h4 className="text-foreground font-display text-lg font-semibold">{t('about.team.title')}</h4><p className="text-primary text-sm mt-1">{t('about.team.subtitle')}</p></div></div>
+            <div className="glass-card overflow-hidden group"><div className="aspect-[3/4] bg-secondary relative overflow-hidden flex items-center justify-center text-muted-foreground">{t('about.team.subtitle')}</div><div className="p-6 text-center"><h4 className="text-foreground font-display text-lg font-semibold">Eng. Nur Mohammed Ali</h4><p className="text-primary text-sm mt-1">{t('about.founder')}</p></div></div>
           </div>
         </div>
       </section>
