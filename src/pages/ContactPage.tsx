@@ -94,12 +94,12 @@ const ContactPage = () => {
 
       <section className="section-padding pt-8">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 min-w-0">
             {/* Form */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="lg:col-span-3"
+              className="lg:col-span-3 min-w-0"
             >
               <div className="relative">
                 <AnimatePresence>
@@ -241,7 +241,7 @@ const ContactPage = () => {
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="lg:col-span-2 space-y-8 min-w-0"
+              className="lg:col-span-2 space-y-8 min-w-0 w-full overflow-hidden"
             >
               <div className="glass-card p-8">
                 <h3 className="text-foreground font-display text-xl font-semibold mb-6">{t('contact.info.title')}</h3>
