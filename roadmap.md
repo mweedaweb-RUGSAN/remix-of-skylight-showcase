@@ -1,5 +1,6 @@
-- [ ] Replace Skylight text across existing pages with multilingual Rugsan content, preserving layout and behavior.
-- [ ] Replace unsupported work, testimonials, statistics and media with clearly labeled neutral placeholders.
-- [ ] Update contact recipient, public details, metadata and links without changing provider behavior.
-- [ ] Verify language switching, filtering, modal behavior and desktop/mobile layout.
-- [ ] Await approved Rugsan tagline, logo/media, founder image and verified email sender before publishing their assets or claims.
+- [x] Replace Skylight copy with Somali-first, English and Arabic Rugsan content while retaining page structure.
+- [x] Show six evidence-safe working-title projects and neutral placeholders instead of unapproved media, numbers and testimonials.
+- [x] Update approved founder text, public contact details, Resend recipients and rugsancco.com metadata.
+- [x] Verify TypeScript, portfolio modal, Arabic RTL, and desktop/mobile page widths.
+- [ ] Add approved tagline, logo, founder portrait and project media when Rugsan supplies them; keep placeholders until then.
+- [ ] Confirm a live email delivery after the Resend connection is linked and deployed; sender domain verification alone does not prove delivery.
