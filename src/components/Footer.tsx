@@ -130,6 +130,8 @@ const Footer = () => {
               <form onSubmit={handleNewsletterSubmit} className="flex gap-2">
                 <input
                   type="email"
+                  required
+                  aria-label={t('footer.newsletter')}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={t('footer.newsletter.placeholder')}
