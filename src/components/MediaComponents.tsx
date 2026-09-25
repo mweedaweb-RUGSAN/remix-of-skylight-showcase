@@ -29,6 +29,7 @@ export const VideoPlayerModal = ({ isOpen, onClose, videoUrl, title }: VideoPlay
           >
             <button
               onClick={onClose}
+              aria-label="Close"
               className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-background/80 flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-all"
             >
               <X className="w-5 h-5" />

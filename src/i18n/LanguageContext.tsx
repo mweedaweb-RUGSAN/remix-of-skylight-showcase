@@ -10,11 +10,30 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
+const STORAGE_KEY = 'rugsan-language';
+const SUPPORTED: Language[] = ['so', 'en', 'ar'];
+
+// Somali stays the default; a previously chosen language survives reloads.
+const readStoredLanguage = (): Language => {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY) as Language | null;
+    if (stored && SUPPORTED.includes(stored)) return stored;
+  } catch {
+    /* storage unavailable */
+  }
+  return 'so';
+};
+
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguageState] = useState<Language>('so');
+  const [language, setLanguageState] = useState<Language>(readStoredLanguage);
 
   const setLanguage = useCallback((lang: Language) => {
     setLanguageState(lang);
+    try {
+      localStorage.setItem(STORAGE_KEY, lang);
+    } catch {
+      /* storage unavailable */
+    }
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.lang = lang;
   }, []);

@@ -77,6 +77,8 @@ const Navigation = () => {
           <div className="relative">
             <button
               aria-label="Language"
+              aria-haspopup="true"
+              aria-expanded={isLangOpen}
               onClick={() => setIsLangOpen(!isLangOpen)}
               className="flex items-center gap-1.5 px-3 py-2 text-xs tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors"
             >
@@ -111,6 +113,8 @@ const Navigation = () => {
           </div>
 
           <button
+            aria-label="Toggle navigation menu"
+            aria-expanded={isMobileOpen}
             onClick={() => setIsMobileOpen(!isMobileOpen)}
             className="lg:hidden text-foreground p-2"
           >

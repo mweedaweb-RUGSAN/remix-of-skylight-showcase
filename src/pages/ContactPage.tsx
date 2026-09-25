@@ -66,8 +66,19 @@ const ContactPage = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (submitting) return;
+
+    // Trim every field and re-check the email format before sending.
+    const payload = Object.fromEntries(
+      Object.entries(formData).map(([k, v]) => [k, v.trim()]),
+    ) as FormState;
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) {
+      toast.error(t('contact.failed'));
+      return;
+    }
+
     setSubmitting(true);
-    const result = await submitContact(formData);
+    const result = await submitContact(payload);
     setSubmitting(false);
     if (result.success) {
       toast.success(t('contact.sent'));
