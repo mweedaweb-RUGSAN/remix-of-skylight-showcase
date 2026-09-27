@@ -27,7 +27,7 @@ const CaseStudiesPage = () => {
           <div className="glass-card p-8"><h3 className="text-primary text-sm tracking-widest uppercase mb-3">{t('caseStudies.problem')}</h3><p className="text-muted-foreground leading-relaxed">{study.description[language]}</p></div>
           {['caseStudies.strategy', 'caseStudies.production', 'caseStudies.results'].map(key => <div key={key} className="glass-card p-8"><h3 className="text-primary text-sm tracking-widest uppercase mb-3">{t(key)}</h3><p className="text-muted-foreground leading-relaxed">{t('caseStudies.unavailable')}</p></div>)}
         </div>
-        <div className="glass-card p-10 text-center max-w-3xl mx-auto"><Quote className="w-8 h-8 text-primary/30 mx-auto mb-4" /><p className="text-foreground text-lg leading-relaxed">{t('testimonials.pending')}</p></div>
+        <div className="glass-card p-10 text-center max-w-3xl mx-auto"><Quote className="w-8 h-8 text-primary/30 mx-auto mb-4" /><p className="text-foreground text-lg leading-relaxed">{t(`testimonials.${i + 1}.text`)}</p><p className="text-primary text-sm mt-5">{t(`testimonials.${i + 1}.attribution`)}</p></div>
         {i < studies.length - 1 && <div className="w-20 h-px bg-border mx-auto" />}
       </motion.article>)}
     </div></section>

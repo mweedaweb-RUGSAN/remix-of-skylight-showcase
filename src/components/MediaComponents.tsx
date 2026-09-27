@@ -57,7 +57,7 @@ export const VideoPlayerModal = ({ isOpen, onClose, videoUrl, title }: VideoPlay
               <div className="w-full h-full flex items-center justify-center">
                 <div className="text-center">
                   <Play className="w-16 h-16 text-primary mx-auto mb-4" />
-                  <p className="text-muted-foreground">{title || 'Media awaiting approval'}</p>
+                  <p className="text-muted-foreground">{title || 'Project media'}</p>
                 </div>
               </div>
             )}

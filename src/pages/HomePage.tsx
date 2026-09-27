@@ -10,14 +10,11 @@ import { ProjectCard, VideoPlayerModal, SectionHeader } from '@/components/Media
 import WhyChooseUs from '@/components/WhyChooseUs';
 import ProcessSection from '@/components/ProcessSection';
 import { DigitalMarketingPackages, EventPackages } from '@/components/Packages';
+import AnimatedCounter from '@/components/AnimatedCounter';
 
 const featuredProductions = getFeaturedPortfolio(6);
 
 const serviceIcons = [Building2, DraftingCompass, HardHat, Files, ClipboardCheck, Ruler];
-const CounterPlaceholder = ({ label }: { label: string }) => (
-  <div className="text-center"><div className="text-4xl md:text-5xl lg:text-6xl font-display font-bold gradient-text mb-2">—</div><p className="text-muted-foreground text-sm tracking-widest uppercase">{label}</p></div>
-);
-
 const HomePage = () => {
   const { t, language } = useLanguage();
   const [videoModalOpen, setVideoModalOpen] = useState(false);
@@ -175,10 +172,10 @@ const HomePage = () => {
       <section className="section-padding">
         <div className="container-custom">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            <CounterPlaceholder label={t('stats.projects')} />
-            <CounterPlaceholder label={t('stats.clients')} />
-            <CounterPlaceholder label={t('stats.years')} />
-            <CounterPlaceholder label={t('stats.awards')} />
+            <AnimatedCounter end={10} suffix="+" label={t('stats.founderExperience')} />
+            <AnimatedCounter end={6} suffix="+" label={t('stats.constructionExperience')} />
+            <AnimatedCounter end={3} label={t('stats.disciplines')} />
+            <AnimatedCounter end={8} suffix="+" label={t('stats.projects')} />
           </div>
         </div>
       </section>
@@ -187,11 +184,8 @@ const HomePage = () => {
       <section className="section-padding bg-surface">
         <div className="container-custom">
           <SectionHeader title={t('testimonials.title')} subtitle={t('testimonials.subtitle')} />
-          <div className="max-w-3xl mx-auto relative min-h-[320px]">
-            <div className="glass-card p-10 md:p-12 text-center relative overflow-hidden">
-              <Quote className="w-10 h-10 text-primary/40 mx-auto mb-6" />
-              <p className="text-foreground text-lg md:text-xl leading-relaxed">{t('testimonials.pending')}</p>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[1, 2, 3].map((item) => <div key={item} className="glass-card p-8 text-center relative overflow-hidden"><Quote className="w-8 h-8 text-primary/40 mx-auto mb-5" /><p className="text-foreground leading-relaxed">{t(`testimonials.${item}.text`)}</p><p className="text-primary text-sm mt-5">{t(`testimonials.${item}.attribution`)}</p></div>)}
           </div>
         </div>
       </section>

@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { SectionHeader } from '@/components/MediaComponents';
 import { Target, Eye, Lightbulb, BookOpen } from 'lucide-react';
+import founderAsset from '@/assets/rugsan-founder.png.asset.json';
 
 const AboutPage = () => {
   const { t } = useLanguage();
@@ -50,7 +51,7 @@ const AboutPage = () => {
                   <Icon className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="text-foreground font-display text-2xl font-semibold mb-3">{title}</h3>
-                {i > 0 && <p className="text-primary text-xs uppercase mb-3">{t('about.draft')}</p>}<p className="text-muted-foreground leading-relaxed">{text}</p>
+                <p className="text-muted-foreground leading-relaxed">{text}</p>
               </motion.div>
             ))}
           </div>
@@ -89,7 +90,7 @@ const AboutPage = () => {
         <div className="container-custom">
           <SectionHeader title={t('about.team.title')} subtitle={t('about.team.subtitle')} />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="glass-card overflow-hidden group"><div className="aspect-[3/4] bg-secondary relative overflow-hidden flex items-center justify-center text-muted-foreground">{t('about.team.subtitle')}</div><div className="p-6 text-center"><h4 className="text-foreground font-display text-lg font-semibold">Eng. Nur Mohammed Ali</h4><p className="text-primary text-sm mt-1">{t('about.founder')}</p></div></div>
+            <div className="glass-card overflow-hidden group"><div className="aspect-[3/4] bg-secondary relative overflow-hidden"><img src={founderAsset.url} alt="Eng. Nur Mohamed Ali, Founder of Rugsan Construction Company" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" /></div><div className="p-6 text-center"><h4 className="text-foreground font-display text-lg font-semibold">Eng. Nur Mohamed Ali</h4><p className="text-primary text-sm mt-1">{t('about.founder')}</p><p className="text-muted-foreground text-sm leading-relaxed mt-3">{t('about.founder.desc')}</p></div></div>
           </div>
         </div>
       </section>

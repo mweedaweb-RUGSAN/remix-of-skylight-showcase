@@ -4,6 +4,7 @@ import { useLanguage } from '@/i18n/LanguageContext';
 import { Language } from '@/i18n/translations';
 import { Menu, X, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import logoAsset from '@/assets/rugsan-logo.jpg.asset.json';
 
 const languages: { code: Language; label: string }[] = [
   { code: 'so', label: 'Soomaali' },
@@ -47,9 +48,9 @@ const Navigation = () => {
       }`}
     >
       <div className="container-custom flex items-center justify-between px-4 md:px-8 gap-4">
-        {/* Company wordmark placeholder until an approved Rugsan logo is available */}
         <Link to="/" className="flex items-center gap-3 group shrink-0" aria-label="Rugsan Construction Company">
-          <span className="flex flex-col"><span className="font-display font-bold text-foreground text-xl">RUGSAN</span><span className="text-[9px] text-primary">{t('footer.description')}</span></span>
+          <img src={logoAsset.url} alt="Rugsan Construction Company logo" className="h-11 w-11 rounded-sm object-cover" />
+          <span className="flex flex-col"><span className="font-display font-bold text-foreground text-xl">RUGSAN</span><span className="text-[9px] text-primary">Construction Company</span></span>
         </Link>
 
         {/* Desktop Nav — translucent pill bar with brand-tinted links */}
