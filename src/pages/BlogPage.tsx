@@ -3,6 +3,7 @@ import { useLanguage } from '@/i18n/LanguageContext';
 
 const BlogPage = () => {
   const { t } = useLanguage();
+  const insights = [1, 2, 3, 4, 5, 6];
 
   return (
     <>
@@ -18,7 +19,7 @@ const BlogPage = () => {
         </div>
       </section>
 
-      <section className="section-padding pt-8"><div className="container-custom"><div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">{Array.from({ length: 6 }).map((_, i) => <motion.article key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="glass-card overflow-hidden"><div className="aspect-video bg-secondary" /><div className="p-6"><p className="text-muted-foreground text-sm">{t('blog.pending')}</p></div></motion.article>)}</div></div></section>
+      <section className="section-padding pt-8"><div className="container-custom"><div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">{insights.map((item, i) => <motion.article key={item} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }} className="glass-card overflow-hidden"><div className="aspect-video bg-secondary" /><div className="p-6"><h2 className="text-foreground font-display text-xl font-semibold mb-3">{t(`blog.${item}.title`)}</h2><p className="text-muted-foreground text-sm leading-relaxed">{t(`blog.${item}.summary`)}</p></div></motion.article>)}</div></div></section>
     </>
   );
 };

@@ -9,6 +9,7 @@ const TiktokIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 import { useState } from 'react';
+import logoAsset from '@/assets/rugsan-logo.jpg.asset.json';
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -41,7 +42,8 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <Link to="/" aria-label="Rugsan Construction Company" className="inline-flex items-center gap-3 group">
-              <span className="flex flex-col"><span className="font-display font-bold text-foreground text-xl">RUGSAN</span><span className="text-[9px] text-primary">{t('footer.description')}</span></span>
+              <img src={logoAsset.url} alt="Rugsan Construction Company logo" className="h-12 w-12 rounded-sm object-cover" loading="lazy" decoding="async" />
+              <span className="flex flex-col"><span className="font-display font-bold text-foreground text-xl">RUGSAN</span><span className="text-[9px] text-primary">Construction Company</span></span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
               {t('footer.description')}
