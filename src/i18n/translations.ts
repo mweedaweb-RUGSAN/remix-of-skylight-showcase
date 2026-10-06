@@ -134,8 +134,11 @@ export const translations: Record<Language, Record<string, string>> = {
     'caseStudies.subtitle': 'What the published project descriptions confirm',
     'caseStudies.problem': 'Project Brief',
     'caseStudies.strategy': 'Approach',
+    'caseStudies.strategy.value': 'Integrated',
     'caseStudies.production': 'Documentation',
+    'caseStudies.production.value': 'Published Work',
     'caseStudies.results': 'Public Record',
+    'caseStudies.results.value': 'Project Example',
 
     // Gallery
     'gallery.title': 'Gallery',
@@ -337,8 +340,11 @@ export const translations: Record<Language, Record<string, string>> = {
     'caseStudies.subtitle': 'Waxa ay xaqiijinayaan sharaxaadaha mashaariicda ee la baahiyay',
     'caseStudies.problem': 'Sharaxaadda Mashruuca',
     'caseStudies.strategy': 'Habka',
+    'caseStudies.strategy.value': 'Isku Xiran',
     'caseStudies.production': 'Dukumentiyada',
+    'caseStudies.production.value': 'Shaqo La Soo Bandhigay',
     'caseStudies.results': 'Xogta Dadweynaha',
+    'caseStudies.results.value': 'Tusaale Mashruuc',
 
     'gallery.title': 'Galariga',
     'gallery.subtitle': 'Galariga mashaariicda iyo naqshadaha Rugsan',
@@ -536,8 +542,11 @@ export const translations: Record<Language, Record<string, string>> = {
     'caseStudies.subtitle': 'ما تؤكده أوصاف المشاريع المنشورة',
     'caseStudies.problem': 'وصف المشروع',
     'caseStudies.strategy': 'النهج',
+    'caseStudies.strategy.value': 'متكامل',
     'caseStudies.production': 'التوثيق',
+    'caseStudies.production.value': 'أعمال منشورة',
     'caseStudies.results': 'السجل المنشور',
+    'caseStudies.results.value': 'نموذج مشروع',
 
     'gallery.title': 'المعرض',
     'gallery.subtitle': 'معرض مشاريع وتصاميم رُغسان',
