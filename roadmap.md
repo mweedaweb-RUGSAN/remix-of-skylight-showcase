@@ -1,5 +1,5 @@
 - [x] Replace Skylight copy with Somali-first, English and Arabic Rugsan content while retaining page structure.
-- [x] Show six evidence-safe working-title projects and neutral placeholders instead of unapproved media, numbers and testimonials.
+- [x] Show eight evidence-safe descriptive projects with approved statistics and experience statements while retaining media placeholders.
 - [x] Update approved founder text, public contact details, Resend recipients and rugsancco.com metadata.
 - [x] Verify TypeScript, portfolio modal, Arabic RTL, and desktop/mobile page widths.
 - [ ] Add approved project media when Rugsan supplies it; keep media placeholders until then.
