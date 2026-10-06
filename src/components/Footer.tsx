@@ -11,6 +11,8 @@ const TiktokIcon = ({ className }: { className?: string }) => (
 import { useState } from 'react';
 import logoAsset from '@/assets/rugsan-logo.jpg.asset.json';
 
+const logoFallback = 'https://ik.imagekit.io/mweedaweb/Rugsan%20Construction%20co/Rugsan%20Site%20Media/RUGSAN%20LOGO.jpg?updatedAt=1790377274317';
+
 const Footer = () => {
   const { t } = useLanguage();
   const [email, setEmail] = useState('');
@@ -42,7 +44,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <Link to="/" aria-label="Rugsan Construction Company" className="inline-flex items-center gap-3 group">
-              <img src={logoAsset.url} alt="Rugsan Construction Company logo" className="h-12 w-12 rounded-sm object-cover" loading="lazy" decoding="async" />
+              <img src={logoAsset.url} onError={(event) => { event.currentTarget.src = logoFallback; }} alt="Rugsan Construction Company logo" className="h-12 w-12 rounded-sm object-cover" loading="lazy" decoding="async" />
               <span className="flex flex-col"><span className="font-display font-bold text-foreground text-xl">RUGSAN</span><span className="text-[9px] text-primary">Construction Company</span></span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">

@@ -4,6 +4,8 @@ import { SectionHeader } from '@/components/MediaComponents';
 import { Target, Eye, Lightbulb, BookOpen } from 'lucide-react';
 import founderAsset from '@/assets/rugsan-founder.png.asset.json';
 
+const founderFallback = 'https://ik.imagekit.io/mweedaweb/Rugsan%20Construction%20co/Rugsan%20Site%20Media/Rugsan%20Founder.png?updatedAt=1790377287179';
+
 const AboutPage = () => {
   const { t } = useLanguage();
 
@@ -90,7 +92,7 @@ const AboutPage = () => {
         <div className="container-custom">
           <SectionHeader title={t('about.team.title')} subtitle={t('about.team.subtitle')} />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="glass-card overflow-hidden group"><div className="aspect-[3/4] bg-secondary relative overflow-hidden"><img src={founderAsset.url} alt="Eng. Nur Mohamed Ali, Founder of Rugsan Construction Company" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" /></div><div className="p-6 text-center"><h4 className="text-foreground font-display text-lg font-semibold">Eng. Nur Mohamed Ali</h4><p className="text-primary text-sm mt-1">{t('about.founder')}</p><p className="text-muted-foreground text-sm leading-relaxed mt-3">{t('about.founder.desc')}</p></div></div>
+            <div className="glass-card overflow-hidden group"><div className="aspect-[3/4] bg-secondary relative overflow-hidden"><img src={founderAsset.url} onError={(event) => { event.currentTarget.src = founderFallback; }} alt="Eng. Nur Mohamed Ali, Founder of Rugsan Construction Company" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" /></div><div className="p-6 text-center"><h4 className="text-foreground font-display text-lg font-semibold">Eng. Nur Mohamed Ali</h4><p className="text-primary text-sm mt-1">{t('about.founder')}</p><p className="text-muted-foreground text-sm leading-relaxed mt-3">{t('about.founder.desc')}</p></div></div>
           </div>
         </div>
       </section>
